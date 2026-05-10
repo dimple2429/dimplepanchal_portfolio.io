@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Dimple Panchal — Flutter & Cross-Platform Engineer</title>
+ <meta name="description" content="Senior Flutter & Cross-Platform Engineer with 6+ years building fintech, legal-tech, gaming, education and logistics apps." />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+ <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+   --serif: 'Cormorant Garamond', Georgia, serif;
+   --sans: 'Jost', system-ui, sans-serif;
+   --cream: #FAF7F2; --cream2: #F2EDE4;
+   --terra: #C4541A; --terra-dim: #F5E8DF; --terra-dk: #8C3610;
+   --sand: #7A6A5A; --ink: #1C1410; --border: #E0D5C8;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 3rem; box-sizing: border-box; width: 100%; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,247,242,0.93); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 1.1rem 0; }
+  nav .container { display: flex; align-items: baseline; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 11px; color: var(--sand); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--terra); }
+
+  .hero { padding: 6rem 0 4rem; border-bottom: 1px solid var(--border); }
+  .hero-tag { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terra); margin-bottom: 1.5rem; font-weight: 500; }
+  .hero-name { font-family: var(--serif); font-size: clamp(52px, 8vw, 84px); line-height: 0.95; letter-spacing: -2.5px; color: var(--ink); margin-bottom: 1.75rem; font-weight: 600; }
+  .hero-name em { font-style: italic; color: var(--terra); font-weight: 400; }
+  .hero-line { width: 48px; height: 2px; background: var(--terra); margin-bottom: 1.75rem; }
+  .hero-desc { font-size: 16px; line-height: 1.8; color: var(--sand); max-width: 500px; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--terra); color: #fff; padding: 12px 24px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--terra-dk); }
+  .btn-ghost { font-size: 12px; color: var(--sand); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
+  .btn-ghost:hover { color: var(--ink); }
+
+  .stats { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--border); margin: 3rem 0 0; }
+  .stat { padding: 1.75rem 1.5rem; border-right: 1px solid var(--border); background: var(--cream2); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 48px; color: var(--terra); line-height: 1; margin-bottom: 4px; font-weight: 600; }
+  .stat-label { font-size: 11px; color: var(--sand); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .stat-sub { font-size: 10px; color: var(--terra); letter-spacing: 0.04em; font-weight: 500; }
+
+  section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .sec-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 16px; }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .domains-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1px; background: var(--border); }
+  .domain-card { background: var(--cream2); padding: 1.5rem 1.25rem; transition: background 0.2s; }
+  .domain-card:hover { background: var(--terra-dim); }
+  .domain-icon { font-size: 22px; margin-bottom: 12px; }
+  .domain-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .domain-detail { font-size: 13px; color: var(--sand); line-height: 1.6; font-weight: 300; }
+  .domain-tag { display: inline-block; margin-top: 10px; font-size: 10px; color: var(--terra-dk); background: var(--terra-dim); padding: 3px 10px; border: 1px solid #E8C9B8; letter-spacing: 0.04em; font-weight: 500; }
+
+  .exp-item { display: grid; grid-template-columns: 130px 1fr; gap: 0 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-year { font-size: 11px; color: var(--sand); padding-top: 4px; line-height: 1.7; }
+  .exp-role { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.3px; }
+  .exp-co { font-size: 11px; color: var(--terra); margin-bottom: 12px; letter-spacing: 0.08em; font-weight: 500; text-transform: uppercase; }
+  .exp-desc { font-size: 14px; color: var(--sand); line-height: 1.75; font-weight: 300; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag { font-size: 11px; background: var(--cream); color: var(--sand); padding: 3px 11px; border: 1px solid var(--border); letter-spacing: 0.04em; }
+
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .proj-card { background: var(--cream); padding: 1.75rem; transition: background 0.2s; }
+  .proj-card:hover { background: var(--terra-dim); }
+  .proj-card.wide { grid-column: 1/-1; background: var(--cream2); }
+  .proj-card.wide:hover { background: var(--terra-dim); }
+  .proj-icon { font-size: 22px; margin-bottom: 14px; }
+  .proj-name { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .proj-desc { font-size: 13px; color: var(--sand); line-height: 1.7; font-weight: 300; margin-bottom: 14px; }
+  .proj-badge { font-size: 10px; color: var(--terra); font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; }
+  .personal-badge { display: inline-block; font-size: 10px; color: var(--terra-dk); background: var(--terra-dim); padding: 2px 9px; border: 1px solid #E8C9B8; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 10px; }
+
+  .ach-row { display: grid; grid-template-columns: 32px 1fr; gap: 0 14px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .ach-row:last-child { border-bottom: none; }
+  .ach-num { font-family: var(--serif); font-size: 14px; color: var(--terra); font-weight: 600; padding-top: 2px; }
+  .ach-text { font-size: 14px; color: var(--sand); line-height: 1.65; font-weight: 300; }
+  .ach-text strong { color: var(--ink); font-weight: 500; }
+
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .sg-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sand); margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pill { font-size: 12px; color: var(--terra-dk); background: var(--terra-dim); padding: 5px 13px; border: 1px solid #E8C9B8; letter-spacing: 0.04em; font-weight: 500; }
+
+  .contact-inner { border-top: 2px solid var(--ink); padding-top: 2.5rem; display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+  .contact-text { font-family: var(--serif); font-size: 38px; line-height: 1.15; color: var(--ink); max-width: 320px; font-weight: 600; letter-spacing: -0.5px; }
+  .contact-text em { font-style: italic; color: var(--terra); font-weight: 400; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; text-align: right; }
+  .contact-link { font-size: 13px; color: var(--sand); text-decoration: none; transition: color 0.2s; }
+  .contact-link:hover { color: var(--terra); }
+
+  footer { padding: 2rem 0; text-align: center; font-size: 11px; color: var(--sand); letter-spacing: 0.06em; border-top: 1px solid var(--border); }
+
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* hamburger */
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); transition: all 0.3s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── TABLET (max 768px) ── */
+  @media (max-width: 768px) {
+   .container { padding: 0 1.75rem; }
+   .hero { padding: 4rem 0 3rem; }
+   .hero-name { font-size: clamp(40px, 9vw, 60px); letter-spacing: -1.5px; }
+   .hero-desc { font-size: 15px; }
+   section { padding: 3.5rem 0; }
+   .domains-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+   .skills-grid { gap: 1.75rem; }
+   .contact-text { font-size: 30px; }
+   .stat-num { font-size: 40px; }
+  }
+
+  /* ── MOBILE (max 540px) ── */
+  @media (max-width: 540px) {
+   .container { padding: 0 1.25rem; }
+
+   /* nav → hamburger */
+   .nav-toggle { display: flex; }
+   .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+   }
+   .nav-links.open { display: flex; }
+   .nav-links li { border-bottom: 1px solid var(--border); }
+   .nav-links a { display: block; padding: 1rem 1.25rem; font-size: 12px; letter-spacing: 0.1em; }
+   nav .container { position: relative; }
+
+   /* hero */
+   .hero { padding: 3rem 0 2.5rem; }
+   .hero-tag { font-size: 10px; margin-bottom: 1rem; }
+   .hero-name { font-size: clamp(36px, 11vw, 52px); letter-spacing: -1px; line-height: 1; margin-bottom: 1.25rem; }
+   .hero-line { margin-bottom: 1.25rem; }
+   .hero-desc { font-size: 14px; margin-bottom: 1.75rem; max-width: 100%; }
+   .btn-primary { padding: 11px 20px; font-size: 11px; }
+
+   /* stats — stack vertically */
+   .stats { grid-template-columns: 1fr; margin-top: 2rem; }
+   .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 1.25rem 1rem; }
+   .stat:last-child { border-bottom: none; }
+   .stat-num { font-size: 36px; }
+
+   /* sections */
+   section { padding: 3rem 0; }
+   .sec-label { margin-bottom: 1.75rem; }
+
+   /* domains — 1 col */
+   .domains-grid { grid-template-columns: 1fr; }
+   .domain-card { padding: 1.1rem 1rem; }
+
+   /* experience — stack year above content */
+   .exp-item { grid-template-columns: 1fr; gap: 4px; padding: 1.5rem 0; }
+   .exp-year { padding-top: 0; color: var(--terra); font-weight: 500; margin-bottom: 4px; }
+   .exp-role { font-size: 18px; }
+   .exp-desc { font-size: 13px; }
+
+   /* projects — 1 col */
+   .proj-grid { grid-template-columns: 1fr; }
+   .proj-card { padding: 1.25rem; }
+   .proj-card.wide { grid-column: 1; }
+   .proj-name { font-size: 17px; }
+   .proj-desc { font-size: 13px; }
+
+   /* skills — 1 col */
+   .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+   /* contact — stack */
+   .contact-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding-top: 2rem; }
+   .contact-text { font-size: 26px; max-width: 100%; }
+   .contact-links { text-align: left; gap: 8px; }
+   .contact-link { font-size: 12px; }
+  }
+
+  /* ── VERY SMALL (max 360px) ── */
+  @media (max-width: 360px) {
+   .container { padding: 0 1rem; }
+   .hero-name { font-size: 32px; }
+   .stat-num { font-size: 30px; }
+   .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+ </style>
+</head>
+<body>
+
+ <nav>
+  <div class="container">
+   <a href="#" class="nav-logo">Dimple Panchal</a>
+   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+   </button>
+   <ul class="nav-links" id="navLinks">
+    <li><a href="#domains" onclick="closeNav()">Domains</a></li>
+    <li><a href="#work" onclick="closeNav()">Work</a></li>
+    <li><a href="#projects" onclick="closeNav()">Projects</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+   </ul>
+  </div>
+ </nav>
+
+ <div class="container">
+
+  <section class="hero">
+   <p class="hero-tag">Flutter &amp; Cross-Platform Engineer · Mumbai, India</p>
+   <h1 class="hero-name">Building apps that<br><em>millions</em> can rely on.</h1>
+   <div class="hero-line"></div>
+   <p class="hero-desc">6+ years shipping Android, iOS, and Flutter Web products across five industries. Currently leading digital channel delivery at Mirae Asset Sharekhan.</p>
+   <div class="hero-actions">
+    <a href="mailto:dimplepanchalwork@gmail.com" class="btn-primary">Get in touch ↗</a>
+    <a href="#work" class="btn-ghost">View my work →</a>
+   </div>
+   <div class="stats">
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Platforms shipped</div><div class="stat-sub">Android · iOS · Web</div></div>
+    <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years experience</div><div class="stat-sub">2020 → Present</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Companies worked</div><div class="stat-sub">Across 5 industries</div></div>
+   </div>
+  </section>
+
+  <section id="domains">
+   <p class="sec-label">Domains</p>
+   <div class="domains-grid">
+    <div class="domain-card fade-in"><div class="domain-icon">📈</div><div class="domain-name">Fintech</div><div class="domain-detail">Trading apps &amp; brokerage platforms for millions of investors. IOM internal workflow tooling.</div><span class="domain-tag">Mirae Asset Sharekhan</span></div>
+    <div class="domain-card fade-in"><div class="domain-icon">⚖️</div><div class="domain-name">Legal Tech</div><div class="domain-detail">Litigation &amp; arbitration case management platform, built solo end-to-end.</div><span class="domain-tag">63 Moons · QILEGAL</span></div>
+    <div class="domain-card fade-in"><div class="domain-icon">🏆</div><div class="domain-name">Gaming</div><div class="domain-detail">Fantasy sports &amp; real-money gaming with high-performance Flutter &amp; Android UX.</div><span class="domain-tag">Playerzpot · SportsRapid</span></div>
+    <div class="domain-card fade-in"><div class="domain-icon">🎓</div><div class="domain-name">Education</div><div class="domain-detail">School communication &amp; student talent app — attendance, certifications, parent updates.</div><span class="domain-tag">Intense Intellect · Talent App</span></div>
+    <div class="domain-card fade-in"><div class="domain-icon">🚚</div><div class="domain-name">Logistics</div><div class="domain-detail">GPS-based vehicle tracking, live inventory &amp; delivery status reporting.</div><span class="domain-tag">Citi Solutions</span></div>
+   </div>
+  </section>
+
+  <section id="work">
+   <p class="sec-label">Experience</p>
+
+   <div class="exp-item fade-in">
+    <div class="exp-year">Oct 2025<br>Present</div>
+    <div>
+     <div class="exp-role">Assistant Manager – Digital Channels</div>
+     <div class="exp-co">Mirae Asset Sharekhan</div>
+     <div class="exp-desc">Leading cross-platform delivery across Android, iOS &amp; Flutter Web for India's top brokerage serving millions of investors. Shipped the IOM Web Application (workflow engine, real-time charts, analytics) from zero to production. Led Android 16 KB upgrade with zero incidents across all three platforms.</div>
+     <div class="tags"><span class="tag">Flutter Web</span><span class="tag">Azure AD SSO</span><span class="tag">GitHub Actions</span><span class="tag">Firebase Hosting</span></div>
+    </div>
+   </div>
+
+   <div class="exp-item fade-in">
+    <div class="exp-year">Apr 2023<br>Oct 2025</div>
+    <div>
+     <div class="exp-role">Senior Flutter Developer</div>
+     <div class="exp-co">63 Moons Technologies Ltd.</div>
+     <div class="exp-desc">Sole Flutter engineer on QILEGAL — a cross-platform legal-tech platform for Litigation &amp; Arbitration case management. Owned UI architecture, GetX state management, and REST API integration from discovery to production.</div>
+     <div class="tags"><span class="tag">GetX</span><span class="tag">Clean Architecture</span><span class="tag">REST APIs</span><span class="tag">Figma-to-code</span></div>
+    </div>
+   </div>
+
+   <div class="exp-item fade-in">
+    <div class="exp-year">Apr 2021<br>Apr 2023</div>
+    <div>
+     <div class="exp-role">Android &amp; Flutter Developer</div>
+     <div class="exp-co">Playerzpot Media Pvt. Ltd.</div>
+     <div class="exp-desc">Built features across Playerzpot Fantasy App (Flutter · GetX) and SportsRapid (Native Android) for a high-volume real-money gaming platform. Integrated in-app mini-games that increased average session time by 15% — a revenue-linked KPI tracked by the product team.</div>
+     <div class="tags"><span class="tag">Flutter</span><span class="tag">Native Android</span><span class="tag">GetX</span><span class="tag">Playerzpot Fantasy App</span><span class="tag">SportsRapid</span></div>
+    </div>
+   </div>
+
+   <div class="exp-item fade-in">
+    <div class="exp-year">May 2020<br>Jan 2021</div>
+    <div>
+     <div class="exp-role">Android Developer</div>
+     <div class="exp-co">Intense Intellect Pvt. Ltd.</div>
+     <div class="exp-desc">Built the Talent App — a school communication platform with real-time attendance tracking, digital certifications, notice boards, and parent updates. Offline-capable with push notifications for low-connectivity environments.</div>
+     <div class="tags"><span class="tag">Android</span><span class="tag">Firebase</span><span class="tag">Offline-first</span><span class="tag">Education</span></div>
+    </div>
+   </div>
+
+   <div class="exp-item fade-in">
+    <div class="exp-year">Jan 2020<br>Apr 2020</div>
+    <div>
+     <div class="exp-role">Android Developer Intern</div>
+     <div class="exp-co">Citi Solutions Warehousing &amp; Distribution</div>
+     <div class="exp-desc">Contributed to a warehouse &amp; logistics Android app — GPS-based vehicle tracking, live inventory updates, and delivery status reporting across distribution workflows.</div>
+     <div class="tags"><span class="tag">Android</span><span class="tag">REST APIs</span><span class="tag">GPS tracking</span></div>
+    </div>
+   </div>
+  </section>
+
+  <section id="projects">
+   <p class="sec-label">Projects</p>
+   <div class="proj-grid">
+
+    <div class="proj-card wide fade-in">
+     <div class="proj-icon">👁️</div>
+     <div class="personal-badge">Personal project</div>
+     <div class="proj-name">Dry Eye Guide — Healthcare App</div>
+     <div class="proj-desc">Solo-built cross-platform health app (Android &amp; iOS) for dry-eye patients. Guided care routines, medication reminders, hydration tracking, and an AI measurements API generating personalised symptom trend insights — moving patients from generic advice to data-driven care. Offline-capable with SQLite persistence.</div>
+     <div class="tags" style="margin-bottom:14px"><span class="tag">Flutter</span><span class="tag">GetX</span><span class="tag">AI API</span><span class="tag">SQLite</span><span class="tag">Offline-first</span></div>
+     <div class="proj-badge">⬤ Feature complete · Pre-launch</div>
+    </div>
+
+    <div class="proj-card fade-in">
+     <div class="proj-icon">🎓</div>
+     <div class="personal-badge">Personal project</div>
+     <div class="proj-name">Ambika Classes App</div>
+     <div class="proj-desc">Educational Android app independently built, published, and later fully migrated from Java to Flutter — modernising the codebase and expanding cross-platform reach.</div>
+     <div class="tags" style="margin-bottom:14px"><span class="tag">Flutter</span><span class="tag">Java</span><span class="tag">MVVM</span><span class="tag">Retrofit</span></div>
+     <div class="proj-badge">★ 4.5 · 500+ downloads · Live</div>
+    </div>
+
+    <div class="proj-card fade-in">
+     <div class="proj-icon">🏏</div>
+     <div class="proj-name">Playerzpot Fantasy App</div>
+     <div class="proj-desc">High-volume real-money fantasy sports app in Flutter with GetX. Delivered multiple product features and integrated mini-games that boosted session time by 15%.</div>
+     <div class="tags" style="margin-bottom:14px"><span class="tag">Flutter</span><span class="tag">GetX</span><span class="tag">Real-money gaming</span></div>
+     <div class="proj-badge">Professional · Playerzpot Media</div>
+    </div>
+
+    <div class="proj-card fade-in">
+     <div class="proj-icon">📱</div>
+     <div class="proj-name">SportsRapid</div>
+     <div class="proj-desc">Native Android sports app — responsive XML-driven UIs, smooth animations, and performance optimisations ensuring consistent frame rates across a wide range of Android devices.</div>
+     <div class="tags" style="margin-bottom:14px"><span class="tag">Native Android</span><span class="tag">XML UI</span><span class="tag">Performance</span></div>
+     <div class="proj-badge">Professional · Playerzpot Media</div>
+    </div>
+
+    <div class="proj-card fade-in">
+     <div class="proj-icon">📊</div>
+     <div class="proj-name">IOM Web Application</div>
+     <div class="proj-desc">Internal Flutter Web tool at Sharekhan — Inter Office Memo workflow engine, real-time charts, analytics, and Azure AD SSO. Designed and shipped solo from zero to production.</div>
+     <div class="tags" style="margin-bottom:14px"><span class="tag">Flutter Web</span><span class="tag">REST APIs</span><span class="tag">Azure AD</span><span class="tag">Firebase Hosting</span></div>
+     <div class="proj-badge">Professional · Mirae Asset Sharekhan</div>
+    </div>
+
+    <div class="proj-card fade-in">
+     <div class="proj-icon">⚖️</div>
+     <div class="proj-name">QILEGAL Platform</div>
+     <div class="proj-desc">Cross-platform legal-tech app for Litigation &amp; Arbitration case management. Sole Flutter engineer — owned architecture, state management, and API integration end-to-end.</div>
+     <div class="tags" style="margin-bottom:14px"><span class="tag">Flutter Web</span><span class="tag">GetX</span><span class="tag">REST APIs</span></div>
+     <div class="proj-badge">Professional · 63 Moons Technologies</div>
+    </div>
+
+   </div>
+  </section>
+
+  <section>
+   <p class="sec-label">Key achievements</p>
+   <div class="ach-row fade-in"><div class="ach-num">01</div><div class="ach-text"><strong>Zero-downtime platform upgrade</strong> — Android 16 KB migration across Flutter Trading, DIY &amp; Tab Sales with zero incidents and zero user impact across all three platforms serving millions of investors.</div></div>
+   <div class="ach-row fade-in"><div class="ach-num">02</div><div class="ach-text"><strong>15% session time uplift</strong> — in-app mini-games at Playerzpot directly improved a revenue-linked engagement KPI tracked by the product team.</div></div>
+   <div class="ach-row fade-in"><div class="ach-num">03</div><div class="ach-text"><strong>Greenfield Flutter Web app</strong> — designed and shipped the IOM Web Application end-to-end: dashboard UI, workflow engine, real-time charts, analytics, and full CI/CD pipeline.</div></div>
+   <div class="ach-row fade-in"><div class="ach-num">04</div><div class="ach-text"><strong>AI-integrated health app</strong> — Dry Eye Guide built solo with an external AI API delivering personalised symptom trend analysis to patients.</div></div>
+  </section>
+
+  <section>
+   <p class="sec-label">Skills</p>
+   <div class="skills-grid">
+    <div><div class="sg-label">Mobile</div><div class="skill-pills"><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">Android SDK</span><span class="pill">Java</span></div></div>
+    <div><div class="sg-label">Architecture &amp; State</div><div class="skill-pills"><span class="pill">Clean Architecture</span><span class="pill">BLoC</span><span class="pill">GetX</span><span class="pill">MVVM</span><span class="pill">Provider</span></div></div>
+    <div><div class="sg-label">Web &amp; Backend</div><div class="skill-pills"><span class="pill">Flutter Web</span><span class="pill">Firebase</span><span class="pill">REST APIs</span><span class="pill">SQLite</span><span class="pill">Azure AD</span></div></div>
+    <div><div class="sg-label">DevOps &amp; Quality</div><div class="skill-pills"><span class="pill">GitHub Actions</span><span class="pill">Accessibility</span><span class="pill">CI/CD</span></div></div>
+   </div>
+  </section>
+
+  <section id="contact">
+   <div class="contact-inner">
+    <div class="contact-text">Let's build something <em>great</em> together.</div>
+    <div class="contact-links">
+     <a href="mailto:dimplepanchalwork@gmail.com" class="contact-link">dimplepanchalwork@gmail.com</a>
+     <a href="tel:+917506026861" class="contact-link">+91 7506026861</a>
+     <a href="https://www.linkedin.com/in/dimple-panchal-flutterdeveloper/" target="_blank" rel="noopener" class="contact-link">LinkedIn →</a>
+     <a href="https://github.com/dimple2429" target="_blank" rel="noopener" class="contact-link">GitHub →</a>
+    </div>
+   </div>
+  </section>
+
+ </div>
+
+ <footer>
+  <div class="container">© 2026 Dimple Panchal · Flutter &amp; Cross-Platform Engineer · Mumbai</div>
+ </footer>
+
+ <script>
+  const observer = new IntersectionObserver((entries) => {
+   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+   toggle.classList.toggle('open');
+   navLinks.classList.toggle('open');
+  });
+  function closeNav() {
+   toggle.classList.remove('open');
+   navLinks.classList.remove('open');
+  }
+ </script>
+
+</body>
+</html>
